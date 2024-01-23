@@ -16,9 +16,6 @@ with open("models/GradientBoostingClassifier.pkl", "rb") as f:
     model2 = pickle.load(f)
 with open("models/KNeighborsClassifier.pkl", "rb") as f:
     model3 = pickle.load(f)
-    
-vt = VarianceThreshold(1.0)
-X = vt.fit_transform(X)
 
 models = {
     'BaggingClassifier': model1,
@@ -42,6 +39,10 @@ st.write(
     X_inp, 
     '## Получаем следующие предсказания:')
     
+vt = VarianceThreshold(1.0)
+vt.fit(X)
+X_inp = vt.transform(X_inp)
+
 for name, model in models.items():
     st.write(f'### `{name}`: клиент', '' if model.predict(X_inp) else 'не', 'подписался на срочный депозит')
              

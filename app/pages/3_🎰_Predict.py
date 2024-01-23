@@ -3,6 +3,7 @@ import pickle
 import numpy as np
 import pandas as pd
 import streamlit as st
+from sklearn.feature_selection import VarianceThreshold
 
 
 df = pd.read_csv('data/DatasetExam_upd.csv')
@@ -15,6 +16,9 @@ with open("models/GradientBoostingClassifier.pkl", "rb") as f:
     model2 = pickle.load(f)
 with open("models/KNeighborsClassifier.pkl", "rb") as f:
     model3 = pickle.load(f)
+    
+vt = VarianceThreshold(1.0)
+X = vt.fit_transform(X)
 
 models = {
     'BaggingClassifier': model1,

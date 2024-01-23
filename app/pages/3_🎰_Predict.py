@@ -29,8 +29,9 @@ st.write('# Предсказание моделей машинного обуч�
 
 st.write('**Введите данные для предсказания 👇**')
 
-for name, model in models.items():
-    st.write(f'### `{name}`: клиент', '' if model.predict(X_inp) else 'не', 'подписался на срочный депозит')
+inp = {}
+for ix in X.columns:
+    inp[ix] = st.slider(f'**{ix} =**', min(X[ix]), max(X[ix]))
     
 X_inp = pd.DataFrame([inp])
 st.write(

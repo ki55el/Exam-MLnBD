@@ -6,8 +6,8 @@ import streamlit as st
 
 
 df = pd.read_csv('data/DatasetExam_upd.csv')
-y = df['y']
-X = df.drop(['y'], axis=1)
+y = df['y_yes']
+X = df.drop(['y_yes'], axis=1)
 
 with open("models/BaggingClassifier.pkl", "rb") as f:
     model1 = pickle.load(f)

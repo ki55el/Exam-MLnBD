@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 
 
-df = pd.read_csv('data/*_upd.csv')
+df = pd.read_csv('data/DatasetExam_upd.csv')
 y = df['y']
 X = df.drop(['y'], axis=1)
 

@@ -29,8 +29,8 @@ st.write('# Предсказание моделей машинного обуч�
 st.write('**Введите данные для предсказания 👇**')
 
 inp = {}
-for ix, label in X.columns:
-    inp[ix] = st.slider(f'**{label} =**', min(X[ix]), max(X[ix]))
+for ix in X.columns:
+    inp[ix] = st.slider(f'**{ix} =**', min(X[ix]), max(X[ix]))
 
 X_inp = pd.DataFrame([inp])
 st.write(
